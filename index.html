@@ -32,17 +32,14 @@
 
   <script type="text/javascript" src="https://raw.github.com/jpoz/actlike/master/actlike.js"></script>
   <script type="text/javascript">
-
       Example = {};
       Example.button = function(el) {
-        this.el = el;
-        this.el.onclick = this.click.bind(this);
+        this.el.onclick = this.click;
       }
 
       Example.button.prototype.click = function() {
-        alert("You clicked button " + this.el.html());
+        alert('YOU CLICK DA BUTTON');
       }
-
   </script>
 
 </head>
@@ -72,6 +69,16 @@
 <h2>Contact</h2>
 <p>James Pozdena (jpoz@jpoz.net)<br/>      </p>
 
+    <h2>Example</h2>
+
+    <button actlike='Example.button'>Click Me!</button>
+
+    <h3>JS</h3>
+    <script src="https://gist.github.com/1315449.js"> </script>
+
+    <h3>HTML</h3>
+    <script src="https://gist.github.com/1315449.js"> </script>
+
 
     <h2 actlike='Example.button'>Download</h2>
     <p>
@@ -82,13 +89,7 @@
     <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
       by running:
       <pre>$ git clone git://github.com/jpoz/actlike</pre>
-      </p>
-
-    <h2>Example</h2>
-
-    <h3>Script</h3>
-
-    <script src="https://gist.github.com/1315449.js"> </script>
+    </p>
 
 
 
