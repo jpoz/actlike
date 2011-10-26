@@ -28,6 +28,22 @@
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
   </style>
+
+  <script type="text/javascript" src="https://raw.github.com/jpoz/actlike/master/actlike.js"></script>
+  <script type="text/javascript">
+
+      Example = {};
+      Example.button = function(el) {
+        this.el = el;
+        this.el.onclick = this.click.bind(this);
+      }
+
+      Example.button.prototype.click = function() {
+        alert("You clicked button " + this.el.getAttribute('id'));
+      }
+
+  </script>
+
 </head>
 
 <body>
@@ -52,7 +68,7 @@
     <h2>Authors</h2>
 <p>James Pozdena (jpoz@jpoz.net)<br/>      </p>
 <h2>Contact</h2>
-<p>James Pozdena (jpozdena@gmail.com)<br/>      </p>
+<p>James Pozdena (jpoz@jpoz.net)<br/>      </p>
 
 
     <h2>Download</h2>
