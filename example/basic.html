@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>Basic Example</title>
+    <script type="text/javascript" src="../act.js"></script>
+    <script type="text/javascript">
+
+      Example = {};
+      Example.button = function(el) {
+        this.el = el;
+        this.el.onclick = this.click.bind(this);
+      }
+
+      Example.button.prototype.click = function() {
+        alert("You clicked button " + this.el.getAttribute('id'));
+      }
+
+    </script>
+    <link href="example.css" type="text/css" rel="stylesheet">
+  </head>
+  <body onLoad='Act.go()' >
+
+    <div class='content'>
+
+      <div id='1' actlike='Example.button'>
+        Click Me!
+      </div>
+
+      <button id='2' actlike='Example.button'>
+        Click Me!
+      </button>
+
+      <input type='submit' id='3' actlike='Example.button' />
+
+    </div>
+
+  </body>
+</head>
