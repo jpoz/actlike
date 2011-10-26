@@ -39,7 +39,7 @@
       }
 
       Example.button.prototype.click = function() {
-        alert("You clicked button " + this.el.getAttribute('id'));
+        alert("You clicked button " + this.el.html());
       }
 
   </script>
@@ -65,7 +65,7 @@
       Hey you DOM Element act like:
     </div>
 
-    <h2>Authors</h2>
+    <h2 actlike='button'>Authors</h2>
 <p>James Pozdena (jpoz@jpoz.net)<br/>      </p>
 <h2>Contact</h2>
 <p>James Pozdena (jpoz@jpoz.net)<br/>      </p>
