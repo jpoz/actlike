@@ -11,7 +11,7 @@ ActLike.go = function() {
     var element;
     for (var i = 0; (element = allElements[i]) != null; i++) {
 
-      var elementActLike = element.getAttribute(Act.ATTR);
+      var elementActLike = element.getAttribute(ActLike.ATTR);
 
       if (elementActLike) {
         var parts = elementActLike.split('.')
