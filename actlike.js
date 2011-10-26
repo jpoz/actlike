@@ -1,9 +1,9 @@
 
-var Act = {};
+ActLike = {};
 
-Act.ATTR = "actlike";
+ActLike.ATTR = "actlike";
 
-Act.go = function() {
+ActLike.go = function() {
 
     var allElements = document.getElementsByTagName("*");
     var results     = [];
