@@ -14,6 +14,23 @@
         alert("You clicked button " + this.el.getAttribute('id'));
       }
 
+      Toggle = function(el) {
+        this.el = el;
+        this.el.default.style.display = 'block';
+        this.el.toggle.style.display  = 'none';
+
+        this.el.onclick = this.click.bind(this);
+      }
+      Toggle.prototype.click = function() {
+        if (this.el.default.style.display == 'block') {
+          this.el.default.style.display = 'none';
+          this.el.toggle.style.display  = 'block';
+        } else {
+          this.el.toggle.style.display  = 'none';
+          this.el.default.style.display = 'block';
+        }
+      }
+
     </script>
     <link href="example.css" type="text/css" rel="stylesheet">
   </head>
@@ -30,6 +47,18 @@
       </button>
 
       <input type='submit' id='3' actlike='Example.button' />
+
+      <div actlike='Toggle'>
+
+        <div iam='default'>
+          Click me I Toggle
+        </div>
+
+        <div iam='toggle'>
+          See I changed! Click again.
+        </div>
+
+      </div>
 
     </div>
 

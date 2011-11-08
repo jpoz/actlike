@@ -1,17 +1,23 @@
 
 ActLike = {};
 
-ActLike.ATTR = "actlike";
+ActLike.CONST = "actlike";
+ActLike.ATTR  = "iam"
 
 ActLike.go = function() {
+    var allElements, results;
 
-    var allElements = document.getElementsByTagName("*");
-    var results     = [];
+    if (typeof document.querySelectorAll === 'function') {
+      allElements = document.querySelectorAll("*["+ActLike.CONST+"]");
+    } else {
+      allElements = document.getElementsByTagName("*");
+    }
+    results = [];
 
     var element;
     for (var i = 0; (element = allElements[i]) != null; i++) {
 
-      var elementActLike = element.getAttribute(ActLike.ATTR);
+      var elementActLike = element.getAttribute(ActLike.CONST);
 
       if (elementActLike) {
         var parts = elementActLike.split('.')
@@ -22,7 +28,9 @@ ActLike.go = function() {
         }
 
         if (constr && constr !== window) {
+          ActLike.attach(element);
           results.push(new constr(element));
+          delete element[ActLike.CONST];
         } else {
           throw("Could not find definition of " + elementActLike);
         }
@@ -34,3 +42,33 @@ ActLike.go = function() {
 
 };
 
+ActLike.attach = function(element) {
+  var subElements;
+
+  if (typeof element.querySelectorAll === 'function') {
+    subElements = element.querySelectorAll("*["+ActLike.ATTR+"]");
+  } else {
+    subElements = element.getElementsByTagName("*");
+  }
+
+  var subElement;
+  for (var i = 0; (subElement = subElements[i]) != null; i++) {
+
+    var elementIam = subElement.getAttribute(ActLike.ATTR);
+
+    if (elementIam) {
+      var parts = elementIam.split('.');
+
+      var node = element;
+      while (parts.length>1) {
+        var key = parts.shift();
+        node[key] = node[key] || {};
+        node = node[key];
+      }
+      node[parts.shift()] = subElement;
+
+    }
+
+  }
+
+}
