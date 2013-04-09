@@ -1,16 +1,16 @@
 
 ActLike = {};
 
-ActLike.CONST = "actlike";
-ActLike.ATTR  = "iam"
+ActLike.CONST = 'actlike';
+ActLike.ATTR = 'iam';
 
 ActLike.go = function() {
     var allElements, results;
 
     if (typeof document.querySelectorAll === 'function') {
-      allElements = document.querySelectorAll("*["+ActLike.CONST+"]");
+      allElements = document.querySelectorAll('*[' + ActLike.CONST + ']');
     } else {
-      allElements = document.getElementsByTagName("*");
+      allElements = document.getElementsByTagName('*');
     }
     results = [];
 
@@ -20,19 +20,20 @@ ActLike.go = function() {
       var elementActLike = element.getAttribute(ActLike.CONST);
 
       if (elementActLike) {
-        var parts = elementActLike.split('.')
+        var parts = elementActLike.split('.');
 
-        var constr = window
-        while (parts.length>0) {
+        var constr = window;
+        while (parts.length > 0) {
           constr = constr[parts.shift()];
         }
 
         if (constr && constr !== window) {
+          element.removeAttribute(ActLike.CONST)
           ActLike.attach(element);
           results.push(new constr(element));
           delete element[ActLike.CONST];
         } else {
-          throw("Could not find definition of " + elementActLike);
+          throw ('Could not find definition of ' + elementActLike);
         }
       }
 
@@ -46,9 +47,9 @@ ActLike.attach = function(element) {
   var subElements;
 
   if (typeof element.querySelectorAll === 'function') {
-    subElements = element.querySelectorAll("*["+ActLike.ATTR+"]");
+    subElements = element.querySelectorAll('*[' + ActLike.ATTR + ']');
   } else {
-    subElements = element.getElementsByTagName("*");
+    subElements = element.getElementsByTagName('*');
   }
 
   var subElement;
@@ -60,7 +61,7 @@ ActLike.attach = function(element) {
       var parts = elementIam.split('.');
 
       var node = element;
-      while (parts.length>1) {
+      while (parts.length > 1) {
         var key = parts.shift();
         node[key] = node[key] || {};
         node = node[key];
@@ -71,4 +72,4 @@ ActLike.attach = function(element) {
 
   }
 
-}
+};
